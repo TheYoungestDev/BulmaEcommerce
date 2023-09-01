@@ -29,8 +29,8 @@ tabs.forEach(tab => {
 
 //modal
 const signupButton = document.querySelector('#signup');
-const modalBg = document.querySelector('.modal-background')
-const modal = document.querySelector('.modal')
+const modalBg = document.querySelector('.modal-background');
+const modal = document.querySelector('.modal');
 
 
 signupButton.addEventListener('click', ()=>{
@@ -42,3 +42,29 @@ modalBg.addEventListener('click', ()=>{
   console.log("bg clicked")
   modal.classList.remove('is-active')
 })
+
+document.addEventListener('DOMContentLoaded', function () {
+  const dockerSmall = document.querySelector('.docker-small');
+  const dockerLarge = document.querySelector('.docker-large');
+  const dockerSelector = document.querySelector('.docker-selector');
+
+  // Function to update prices based on the selected option
+  function updatePrices() {
+    const selectedOption = dockerSelector.value;
+
+    if (selectedOption === 'small') {
+      dockerSmall.classList.remove('is-hidden');
+      dockerLarge.classList.add('is-hidden');
+    } else if (selectedOption === 'large') {
+      dockerSmall.classList.add('is-hidden');
+      dockerLarge.classList.remove('is-hidden');
+    }
+  }
+
+  // Initial update based on the default selected option
+  updatePrices();
+
+  // Add event listener to the select box
+  dockerSelector.addEventListener('change', updatePrices);
+});
+
